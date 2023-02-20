@@ -1,0 +1,8 @@
+{
+	"javascript.suggest.autoImports": false,
+	"javascript.suggest.includeCompletionsForImportStatements": false,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.suggest.autoImports": false,
+	"typescript.suggest.includeCompletionsForImportStatements": false,
+	"editor.foldingImportsByDefault": true
+}
