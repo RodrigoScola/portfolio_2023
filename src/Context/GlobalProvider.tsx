@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useCallback } from "react";
 
 type SectionType = {
 	backgroundColor: string;
@@ -29,29 +29,43 @@ export const GlobalProvider: React.FC<{ children: JSX.Element }> = ({ children }
 		{ backgroundColor: "#000512", title: "Experience", id: 1 },
 		{ backgroundColor: "#d8f3dc", title: "Contact", id: 2 },
 	]);
-	const [step, setStep] = useState(0);
+	const [step, setStep] = useState(-1);
 	const [textColor, setTextColor] = useState<"text-black" | "text-white">("text-black");
 
-	const changeImage = (newValue: string) => {
-		setPrevColor(backgroundColor);
-		setBackgroundColor(newValue);
-	};
-	const changeStep = (newValue: number) => {
-		let n = (step + newValue) % 3;
-		if (n < 0) n = 2;
-		if (n > 2) n = 0;
-		setStep(n);
-	};
+	const changeImage = useCallback(
+		(newValue: string) => {
+			if (step >= 0) {
+				setPrevColor(backgroundColor);
+				setBackgroundColor(newValue);
+			}
+		},
+		[step]
+	);
+	const changeStep = useCallback(
+		(newValue: number) => {
+			let n = (step + newValue) % 3;
+			if (n < 0) n = 2;
+			if (n > 2) n = 0;
+			setStep(n);
+		},
+		[step]
+	);
 
 	useEffect(() => {
-		changeImage(sections[step].backgroundColor);
+		if (step >= 0) {
+			changeImage(sections[step].backgroundColor);
 
-		if (step == 1) {
-			setTextColor("text-white");
-		} else {
-			setTextColor("text-black");
+			if (step == 1) {
+				setTextColor("text-white");
+			} else {
+				setTextColor("text-black");
+			}
 		}
 	}, [step]);
+
+	useEffect(() => {
+		setStep(0);
+	}, []);
 
 	return (
 		<GlobalContext.Provider

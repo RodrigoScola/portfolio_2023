@@ -22,10 +22,13 @@ export const ImageChanger = () => {
 	}, [colors.previousBackgroundColor]);
 	const rotation = useMemo(() => page * 120, [page]);
 
-	const handlePage = (count: number) => {
-		setPage(page + count);
-		changeStep(count);
-	};
+	const handlePage = useCallback(
+		(count: number) => {
+			setPage(page + count);
+			changeStep(count);
+		},
+		[page, changeStep]
+	);
 	const getRotations = useCallback(
 		(num: number) => {
 			const nstep = step;
