@@ -3,16 +3,23 @@ import Tpe from "../../images/tclb.png";
 import Droom from "../../images/droom copy.png";
 import { Bublle } from "../Bubble";
 import { Card } from "../Card";
+import { motion } from "framer-motion";
 
 export const ProjectsSection = () => {
 	return (
 		<>
 			<Bublle className="top-24 -right-24" />
-			<section className="pt-32">
+			<motion.section
+				initial={{
+					x: -50,
+				}}
+				animate={{ x: 0 }}
+				className="pt-32"
+			>
 				<p className="text-2xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-5xl  max-w-[90%]  bg-white w-fit text-black p-7 font-medium shadow-md rounded-3xl  m-auto text-center font-lato">
 					Some Of The Projects I Worked On
 				</p>
-			</section>
+			</motion.section>
 
 			<section className="pt-32 flex flex-col gap-48 p-8 px-10">
 				<Card

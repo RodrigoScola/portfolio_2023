@@ -11,16 +11,16 @@ const smtpOptions: SMTPTransport.Options = {
 	port: parseInt(process.env.SMTP_PORT || "2525"),
 	secure: false,
 	auth: {
-		user: "handomize64@gmail.com",
-		pass: "1212Roro",
+		user: "handomizando@gmail.com",
+		pass: "dhzbiqphguxngkvo",
 	},
 };
 
 export const sendEmail = async (data: EmailPayload) => {
 	const transporter = nodemailer.createTransport(smtpOptions);
 	const mail = await transporter.sendMail({
-		from: process.env.SMTP_USER,
-		to: process.env.STMP_TO_EMAIL,
+		from: "handomizando@gmail.com",
+		to: "rodrigo.sgarabotto.scola@gmail.com",
 		...data,
 	});
 

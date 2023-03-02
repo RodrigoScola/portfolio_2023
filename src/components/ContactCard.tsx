@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactElement, ReactNode } from "react";
 import { motion, animate } from "framer-motion";
 
 const propIn = {
@@ -15,7 +15,7 @@ const propOut: PropType = {
 	backgroundColor: "#7cbf9b",
 };
 
-export const ContactCard = ({ children }: any) => {
+export const ContactCard = ({ children }: { children: JSX.Element | ReactElement | ReactNode }) => {
 	const [{ backgroundColor, scale }, setProperties] = useState({
 		backgroundColor: propIn.backgroundColor,
 		scale: 1,

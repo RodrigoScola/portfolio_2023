@@ -3,6 +3,7 @@ import { FiGithub } from "react-icons/fi";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { ContactCard } from "../ContactCard";
+import { RiPagesLine } from "react-icons/ri";
 
 type infoType = {
 	name: string;
@@ -23,9 +24,9 @@ export const ContactSection = () => {
 			const data = await fetch("/api/send-email", {
 				method: "POST",
 				body: JSON.stringify({
-					email: "Rodrigo",
-					message: "SOE",
-					name: "Scola",
+					email: info.email,
+					message: info.message,
+					name: info.name,
 				}),
 			});
 			const jsondata = await data.json();
@@ -73,6 +74,17 @@ export const ContactSection = () => {
 							<p className="text-center font-bold text-xl font-lato">Github</p>
 						</a>
 					</motion.li>
+					<motion.li
+						initial={{ scale: 1 }}
+						whileHover={{ scale: 1.1 }}
+						transition={{ ease: "backOut" }}
+						className="p-4 rounded-2xl flex shadow-md  items-end justify-center bg-green-300"
+					>
+						<a href={`/resume.pdf`} download className="">
+							<RiPagesLine size={100} />
+							<p className="text-center font-bold text-xl font-lato">Resume</p>
+						</a>
+					</motion.li>
 					{/* <li className="p-4 rounded-2xl flex shadow-md  items-end justify-center bg-green-300">
 						<div className="">
 							<AiOutlineMail size={100} />
@@ -94,6 +106,7 @@ export const ContactSection = () => {
 									onChange={handleChange}
 									name={"name"}
 									value={info.name}
+									required
 									placeholder="Jane Doe"
 									className="bg-transparent border-b-2 p-2 active:border-none font-lato focus:outline-none active:outline-b-black active:active:outline-b-2 border-b-black"
 									type="text"
@@ -103,6 +116,7 @@ export const ContactSection = () => {
 								<label className="text-xl font-lato">Email:</label>
 								<input
 									name="email"
+									required
 									onChange={handleChange}
 									type="email"
 									value={info.email}

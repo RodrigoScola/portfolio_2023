@@ -12,7 +12,9 @@ export type EmailBody = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	if (req.method == "POST") {
 		try {
-			const { email, message, name }: EmailBody = req.body;
+			const { email, message, name }: EmailBody = JSON.parse(req.body);
+			console.log(req.body);
+			console.log(req.body.email);
 			const emai = await sendEmail({
 				subject: `hello there im ${name}`,
 				html: `
@@ -28,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 				
 				`,
 			});
-			console.log(emai);
+			// console.log(emai);
 			return res.status(200).json({ message: "email sent!" });
 		} catch (err) {
 			return res.status(400).send(err);

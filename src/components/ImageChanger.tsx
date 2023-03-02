@@ -1,11 +1,12 @@
 import Photo from "../images/profile.jpg";
+import Connect from "../images/all_connect.png";
 import Projects from "../images/all_2023.png";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { GlobalContext, GlobalContextType } from "@/Context/GlobalProvider";
 import { LightenDarkenColor } from "@/utils";
 
-const photos: string[] = [Photo.src, Projects.src, "#"];
+const photos: string[] = [Photo.src, Projects.src, Connect.src];
 
 export const ImageChanger = () => {
 	const [page, setPage] = useState(0);
@@ -33,11 +34,6 @@ export const ImageChanger = () => {
 		setPage((curr) => curr + step);
 	}, [step]);
 
-	const getPhoto = useMemo(() => {
-		if (step == 0) return Photo.src;
-		if (step == 1) return Projects.src;
-		return "#";
-	}, [step]);
 	const getRandomCount = () => {
 		const numbers = new Array(Math.floor(Math.random() * 10)).fill(1).reduce((curr, num) => {
 			num = Math.random() < 0.2 == true ? -(Math.random() * num) : Math.random() * num;
@@ -139,14 +135,14 @@ export const ImageChanger = () => {
 			{photos.map((src, index) => {
 				if (step == index)
 					return (
-						<AnimatePresence initial={false}>
+						<AnimatePresence>
 							<motion.img
 								className={`absolute h-48 w-48 top-10 left-12  md:left-12 md:top-12 md:w-64  md:h-64 -z-10 ${
 									step == 0 ? "object-cover rounded-full" : "object-contain"
 								}
 				} xl:w-96 xl:h-96  xl:top-14 xl:left-24 drop-shadow-2xl`}
 								key={"phto"}
-								src={getPhoto}
+								src={photos[step]}
 								initial={{
 									scale: 0,
 								}}

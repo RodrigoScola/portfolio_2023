@@ -82,7 +82,7 @@ export const Card = ({
 							transition={{
 								duration: 1.5,
 							}}
-							className={`text-md text-gray-500 pt-3 md:text-6xl xl:text-6xl text-${oposite} text-start font-sans font-medium`}
+							className={`text-lg text-gray-500 md:text-xl pt-3 text-${oposite} text-start font-sans font-medium`}
 						>
 							{year}
 						</motion.p>
