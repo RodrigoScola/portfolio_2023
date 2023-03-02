@@ -1,11 +1,9 @@
-import { ImageChanger } from "@/components/ImageChanger"
-import { useState } from "react"
-import Photo from "../images/profile.jpg"
+import { ImageChanger } from "@/components/ImageChanger";
 
 export default function TEST() {
 	return (
 		<>
 			<ImageChanger />
 		</>
-	)
+	);
 }
