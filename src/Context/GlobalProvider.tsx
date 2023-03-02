@@ -12,6 +12,7 @@ export type GlobalContextType = {
 	changeStep: (newValue: number) => void;
 	changeImage: (newValue: string) => void;
 	step: number;
+	setStep: (newValue: number) => void;
 	sections: SectionType[];
 	colors: {
 		backgroundColor: string;
@@ -63,7 +64,7 @@ export const GlobalProvider: React.FC<{ children: JSX.Element }> = ({ children }
 					previousBackgroundColor: prevColor,
 					textColor,
 				},
-
+				setStep,
 				changeStep,
 				sections,
 				step,

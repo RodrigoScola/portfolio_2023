@@ -1,16 +1,15 @@
-import { StaticImageData } from "next/image";
 import Photo from "../images/profile.jpg";
 import Projects from "../images/all_2023.png";
 import { useContext, useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { GlobalContext, GlobalContextType } from "@/Context/GlobalProvider";
 import { LightenDarkenColor } from "@/utils";
 
+const photos: string[] = [Photo.src, Projects.src, "#"];
+
 export const ImageChanger = () => {
 	const [page, setPage] = useState(0);
-	const { backgroundTheme, changeImage, changeStep, colors, prevColor, sections, step } = useContext(
-		GlobalContext
-	) as GlobalContextType;
+	const { changeStep, colors, step } = useContext(GlobalContext) as GlobalContextType;
 	const [c, setC] = useState(colors.previousBackgroundColor);
 
 	useEffect(() => {
@@ -29,6 +28,11 @@ export const ImageChanger = () => {
 		const nstep = step;
 		return -(nstep - num);
 	};
+
+	useEffect(() => {
+		setPage((curr) => curr + step);
+	}, [step]);
+
 	const getPhoto = useMemo(() => {
 		if (step == 0) return Photo.src;
 		if (step == 1) return Projects.src;
@@ -45,11 +49,6 @@ export const ImageChanger = () => {
 
 		return numbers;
 	};
-	const [{ x, y }, setPos] = useState<{ x: number[]; y: number[] }>({ x: [0, 0], y: [0, 0] });
-
-	useEffect(() => {
-		setPos({ x: [0, ...getRandomCount(), 0], y: [0, ...getRandomCount(), 0] });
-	}, []);
 
 	return (
 		<>
@@ -76,10 +75,10 @@ export const ImageChanger = () => {
 					className="h-96 w-96 absolute rounded-full top-24 left-12 -z-10"
 				></motion.div>
 			) : null}
-			<div className="cursor-pointer z-40 font-bold relative top-0 left-24 font-lato">
+			<div className="cursor-pointer noselect  z-40 font-bold absolute top-0 left-44 font-lato">
 				<motion.div
 					animate={{ rotate: rotation }}
-					className={`xl:h-96 xl:w-96  md:h-60 md:w-60 w-44 h-44 rounded-full relative top-12 -left-12 md:top-14 md:-left-10 text-2xl md:text-4xl xl:text-5xl`}
+					className={`xl:h-96 xl:w-96  md:h-60 md:w-60 w-44 h-44 rounded-full relative top-12 -left-24 md:top-14 md:-left-20 text-2xl md:text-4xl lg:left-24 xl:text-5xl xl:-left-6`}
 				>
 					<motion.div
 						onClick={() => handlePage(getRotations(0))}
@@ -87,7 +86,7 @@ export const ImageChanger = () => {
 						id="card1"
 						className=" top-20  left-40  md:top-30 md:left-52 xl:top-40  xl:left-80 relative w-fit "
 					>
-						<p className="text-5xl   drop-shadow-lg ">About Me</p>
+						<p className="   drop-shadow-lg ">About Me</p>
 					</motion.div>
 					<motion.div
 						onClick={() => handlePage(getRotations(1))}
@@ -106,7 +105,7 @@ export const ImageChanger = () => {
 						<p className=" drop-shadow-lg">Contact</p>
 					</motion.div>
 				</motion.div>
-				<div id="controls" className="relative left-96 bottom-24">
+				<div id="controls" className="relative left-32 top-2 lg:left-96  md:left-52  md:-top-12">
 					<div className="w-fit " onClick={() => handlePage(+1)} id="left">
 						<div className="">
 							<svg
@@ -137,20 +136,29 @@ export const ImageChanger = () => {
 					</div>
 				</div>
 			</div>
-
-			<motion.img
-				className={`absolute h-48 w-48 top-10 left-32 md:left-12 md:top-12 md:w-64  md:h-64 -z-10 ${
-					step == 0 ? "object-cover rounded-full" : "object-contain"
-				}
+			{photos.map((src, index) => {
+				if (step == index)
+					return (
+						<AnimatePresence initial={false}>
+							<motion.img
+								className={`absolute h-48 w-48 top-10 left-12  md:left-12 md:top-12 md:w-64  md:h-64 -z-10 ${
+									step == 0 ? "object-cover rounded-full" : "object-contain"
+								}
 				} xl:w-96 xl:h-96  xl:top-14 xl:left-24 drop-shadow-2xl`}
-				key={"phto"}
-				animate={{
-					x,
-					y,
-				}}
-				transition={{ duration: 3, repeat: Infinity }}
-				src={getPhoto}
-			/>
+								key={"phto"}
+								src={getPhoto}
+								initial={{
+									scale: 0,
+								}}
+								transition={{ duration: 0.2 }}
+								animate={{
+									scale: 1,
+								}}
+								exit={{ opacity: 0, scale: 0 }}
+							/>
+						</AnimatePresence>
+					);
+			})}
 		</>
 	);
 };

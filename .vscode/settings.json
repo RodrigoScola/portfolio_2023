@@ -1,8 +1,11 @@
 {
-	"javascript.suggest.autoImports": false,
-	"javascript.suggest.includeCompletionsForImportStatements": false,
+	"javascript.suggest.autoImports": true,
+	"javascript.suggest.includeCompletionsForImportStatements": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
-	"typescript.suggest.autoImports": false,
-	"typescript.suggest.includeCompletionsForImportStatements": false,
-	"editor.foldingImportsByDefault": true
+	"typescript.suggest.autoImports": true,
+	"typescript.suggest.includeCompletionsForImportStatements": true,
+	"editor.foldingImportsByDefault": true,
+	"vim.changeWordIncludesWhitespace": false,
+	"vim.easymotionDimBackground": false,
+	"vim.startofline": false
 }
