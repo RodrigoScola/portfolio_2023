@@ -94,7 +94,7 @@ export const ContactSection = () => {
 					</li> */}
 				</ul>
 			</section>
-			<section className="min-w-sm w-[50%] m-auto">
+			<section className="min-w-[300px] w-[50%] m-auto">
 				<ContactCard>
 					<p className="text-center text-4xl  w-fit m-auto rounded-xl p-4">Contact me</p>
 				</ContactCard>

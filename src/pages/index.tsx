@@ -94,11 +94,11 @@ export default function Home() {
 					</div>
 				</m.div>
 			</LazyAnimation>
-			<div id="footer" className="flex pt-12  flex-col bg-black  z-50 text-white items-center justify-evenly">
+			<div id="footer" className="flex pt-12   flex-col bg-black  z-50 text-white items-center justify-evenly">
 				<div className="py-6">
 					<p className="font-lato text-xl">Hey there</p>
 				</div>
-				<ul className="flex justify-between flex-row w-full ">
+				<ul className="flex justify-between max-w-lg m-auto flex-row w-full ">
 					<li className="w-12 h-24 m-auto justify-center flex  max-w-md  ">
 						<a
 							href="https://www.linkedin.com/in/rodrigo-scola-2517521b6/"
