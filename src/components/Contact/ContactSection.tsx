@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { FiGithub } from "react-icons/fi";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { motion } from "framer-motion";
@@ -13,11 +13,11 @@ type infoType = {
 export const ContactSection = () => {
 	const [info, setInfo] = useState<infoType>({ email: "", message: "", name: "" });
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		setInfo((curr) => ({ ...curr, [e.target.name]: e.target.value }));
 	};
 
-	const handleSubmit = async (e: Event) => {
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		try {
 			const data = await fetch("/api/send-email", {
@@ -50,6 +50,7 @@ export const ContactSection = () => {
 						<a
 							href="https://www.linkedin.com/in/rodrigo-scola-2517521b6/"
 							target={"_blank"}
+							rel={"noreferrer"}
 							className=""
 						>
 							<AiOutlineLinkedin size={100} />
@@ -62,7 +63,12 @@ export const ContactSection = () => {
 						transition={{ ease: "backOut" }}
 						className="p-4 rounded-2xl flex shadow-md  items-end justify-center bg-green-300"
 					>
-						<a href="https://github.com/RodrigoScola" target={"_blank"} className="">
+						<a
+							href="https://github.com/RodrigoScola"
+							rel={"noreferrer"}
+							target={"_blank"}
+							className=""
+						>
 							<FiGithub size={100} />
 							<p className="text-center font-bold text-xl font-lato">Github</p>
 						</a>

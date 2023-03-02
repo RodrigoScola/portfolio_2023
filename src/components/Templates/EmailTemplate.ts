@@ -5,7 +5,7 @@ import { Container } from "@react-email/container";
 import { EmailBody } from "@/pages/api/send-email";
 
 export function ContactEmail({ name, email, message }: EmailBody) {
-	return (
+	return `
 		<Html>
 			<Section style={main}>
 				<Container style={container}>
@@ -15,7 +15,7 @@ export function ContactEmail({ name, email, message }: EmailBody) {
 				</Container>
 			</Section>
 		</Html>
-	);
+	`;
 }
 
 const main = {

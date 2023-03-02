@@ -48,7 +48,9 @@ export const Card = ({
 				}}
 				className="mt-4  p bg-gradient-to-b p-5 flex flex-col sm:flex-row rounded-3xl  text-black"
 			>
-				{cardOrientation == "left" && <ImageComponent image={image} title={title} />}
+				{cardOrientation == "left" && typeof image !== "undefined" && (
+					<ImageComponent image={image} title={title} />
+				)}
 				<div className="flex rounded-3xl order-1 sm:order-none   flex-col pl-5 place-content-between col-span-2">
 					<motion.div
 						initial={{ opacity: 0, x: oposite == "right" ? 50 : -50 }}
@@ -98,6 +100,7 @@ export const Card = ({
 							<a
 								target={"_blank"}
 								href={liveUrl}
+								rel={"noreferrer"}
 								className="border-4 min-w-fit  h-fit text-left p-2 m-1  text-white font-semibold  border-spacing-2 border-primary-lighter bg-black rounded-full card-animation hover:scale-105 transition-transform ease-in duration-75 hover:shadow-md"
 							>
 								See it Live
@@ -107,6 +110,7 @@ export const Card = ({
 							<a
 								target={"_blank"}
 								href={codeUrl}
+								rel={"noreferrer"}
 								className="border-4 min-w-fit  h-fit text-left p-2 m-1  text-white font-semibold  border-spacing-2 border-primary-lighter bg-black rounded-full card-animation hover:scale-105 transition-transform ease-in duration-75 hover:shadow-md"
 							>
 								See The Code
@@ -114,7 +118,9 @@ export const Card = ({
 						)}
 					</div>
 				</div>
-				{cardOrientation == "right" && <ImageComponent image={image} title={title} />}
+				{cardOrientation == "right" && typeof image !== "undefined" && (
+					<ImageComponent image={image} title={title} />
+				)}
 			</motion.div>
 		</div>
 	);

@@ -7,8 +7,6 @@ type SectionType = {
 };
 
 export type GlobalContextType = {
-	backgroundTheme: string;
-	prevColor: string;
 	changeStep: (newValue: number) => void;
 	changeImage: (newValue: string) => void;
 	step: number;

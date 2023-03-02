@@ -12,7 +12,7 @@ const AboutMeSection = dynamic(() => import("../components/Contact/AboutMeSectio
 const ContactSection = dynamic(() => import("../components/Contact/ContactSection").then((r) => r.ContactSection));
 const ProjectsSection = dynamic(() => import("../components/Contact/ProjectsSection").then((r) => r.ProjectsSection));
 
-const RenderTitleItem = ({ children }: { children: JSX }) => {
+const RenderTitleItem = ({ children }: { children: any }) => {
 	return (
 		<motion.div
 			initial={{ opacity: 0, x: 0.5 }}
@@ -78,7 +78,7 @@ export default function Home() {
 							)}
 							{gcon.step == 1 && (
 								<RenderTitleItem>
-									<p className="">Here's Some of My </p>
+									<p className="">Heres Some of My </p>
 									<p className=" text-yellow-400">Work</p>
 								</RenderTitleItem>
 							)}
@@ -105,13 +105,21 @@ export default function Home() {
 				</div>
 				<ul className="flex justify-around gap-6">
 					<li className="w-24 h-24 flex flex-col justify-center">
-						<a href="https://www.linkedin.com/in/rodrigo-scola-2517521b6/" target={"_blank"}>
+						<a
+							href="https://www.linkedin.com/in/rodrigo-scola-2517521b6/"
+							rel={"noreferrer"}
+							target={"_blank"}
+						>
 							<FaLinkedin size={40} />
 							<p>linkedin</p>
 						</a>
 					</li>
 					<li className="w-24 h-24 flex flex-col justify-center">
-						<a href="https://www.linkedin.com/in/rodrigo-scola-2517521b6/" target={"_blank"}>
+						<a
+							href="https://www.linkedin.com/in/rodrigo-scola-2517521b6/"
+							rel={"noreferrer"}
+							target={"_blank"}
+						>
 							<AiFillGithub size={40} />
 							<p>Github</p>
 						</a>

@@ -6,12 +6,12 @@ import {
 	FrameworksItems,
 	backendItems,
 } from "../data/items";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-type ItemType = {
+type NItemType = {
 	title: string;
-	image: string;
+	image: StaticImageData;
 };
 
 const GlitchTitle = ({ title }: { title: string }) => {
@@ -74,16 +74,16 @@ const GlitchTitle = ({ title }: { title: string }) => {
 	);
 };
 
-const RenderItem = ({ title, image }: ItemType) => {
+const RenderItem = ({ title, image }: NItemType) => {
 	return (
 		<div className="w-fit">
-			<Image className=" h-16 object-contain" src={image} alt={`${title}`} width={100} height={100} />
+			<Image className=" h-16 object-contain" src={image.src} alt={`${title}`} width={100} height={100} />
 			<p className="text-center ">{title}</p>
 		</div>
 	);
 };
 
-const RenderItems = ({ items, title }: { items: ItemType[]; title: string }) => {
+const RenderItems = ({ items, title }: { items: NItemType[]; title: string }) => {
 	return (
 		<div className="flex absolute items-center">
 			<div className="absolute -left-12  text-5xl -z-20 opacity-40 ">

@@ -1,7 +1,5 @@
 import { ForwardRefComponent, HTMLMotionProps, motion } from "framer-motion";
-export const Bublle: React.FC<ForwardRefComponent<HTMLDivElement, HTMLMotionProps<"div">> & { className: string }> = (
-	props
-) => {
+export const Bublle = (props: any) => {
 	return (
 		<motion.div
 			animate={{
