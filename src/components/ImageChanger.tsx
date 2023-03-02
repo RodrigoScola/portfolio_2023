@@ -101,8 +101,8 @@ export const ImageChanger = () => {
 						</m.div>
 					</m.div>
 				</LazyAnimation>
-				<div id="controls" className="relative left-20 top-2 lg:left-40 xl:left-80 md:left-52  md:-top-12">
-					<div className="w-fit " onClick={() => handlePage(+1)} id="left">
+				<div id="controls" className=" relative left-20 top-2 lg:left-40 xl:left-80 md:left-52  md:-top-12">
+					<div className="w-fit  " onClick={() => handlePage(+1)} id="left">
 						<div className="">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ export const ImageChanger = () => {
 							</svg>
 						</div>
 					</div>
-					<div className=" w-fit" onClick={() => handlePage(-1)} id="right">
+					<div className="noselect w-fit" onClick={() => handlePage(-1)} id="right">
 						<div>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"

@@ -2,7 +2,9 @@ import { GlobalContext, GlobalContextType } from "@/Context/GlobalProvider";
 import { FaLinkedin } from "react-icons/fa";
 import { useContext } from "react";
 import { m } from "framer-motion";
-import { AiFillMail, AiFillGithub } from "react-icons/ai";
+import { AiFillGithub } from "react-icons/ai";
+import { RiPagesLine } from "react-icons/ri";
+import dynamic from "next/dynamic";
 import { ImageChanger } from "../components/ImageChanger";
 
 import { AboutMeSection } from "../components/Contact/AboutMeSection";
@@ -10,7 +12,6 @@ const ContactSection = dynamic(() => import("../components/Contact/ContactSectio
 const ProjectsSection = dynamic(() => import("../components/Contact/ProjectsSection").then((r) => r.ProjectsSection));
 
 import { LazyAnimation } from "@/components/LazyAnimation";
-import dynamic from "next/dynamic";
 
 const RenderTitleItem = ({ children }: { children: any }) => {
 	return (
@@ -118,14 +119,10 @@ export default function Home() {
 							<p>Github</p>
 						</a>
 					</li>
-					<li className="w-12 h-24 m-auto justify-center flex  max-w-md">
-						<a
-							href="https://www.linkedin.com/in/rodrigo-scola-2517521b6/"
-							rel={"noreferrer"}
-							target={"_blank"}
-						>
-							<AiFillMail size={40} />
-							<p>Resume </p>
+					<li className="p-4 rounded-2xl flex shadow-md  items-end justify-center bg-green-300">
+						<a href={`/resume.pdf`} download className="">
+							<RiPagesLine size={100} />
+							<p className="text-center font-bold text-xl font-lato">Resume</p>
 						</a>
 					</li>
 				</ul>
