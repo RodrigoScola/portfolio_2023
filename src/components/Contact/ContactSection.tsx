@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { FiGithub } from "react-icons/fi";
 import { AiOutlineLinkedin } from "react-icons/ai";
 import { m } from "framer-motion";
+import { LazyAnimation } from "../LazyAnimation";
 import { ContactCard } from "../ContactCard";
 import { RiPagesLine } from "react-icons/ri";
 
@@ -38,10 +39,10 @@ export const ContactSection = () => {
 	};
 
 	return (
-		<>
+		<LazyAnimation>
 			<section className="my-2">
 				<p className="text-center text-3xl">See what i am up to</p>
-				<ul className="flex justify-evenly flex-wrap  gap-3 py-12">
+				<ul className="flex justify-evenly flex-wrap gap-3 py-12">
 					<m.li
 						initial={{ scale: 1 }}
 						whileHover={{ scale: 1.1 }}
@@ -93,7 +94,7 @@ export const ContactSection = () => {
 					</li> */}
 				</ul>
 			</section>
-			<section className="min-w-fit w-[50%] m-auto">
+			<section className="min-w-sm w-[50%] m-auto">
 				<ContactCard>
 					<p className="text-center text-4xl  w-fit m-auto rounded-xl p-4">Contact me</p>
 				</ContactCard>
@@ -147,6 +148,6 @@ export const ContactSection = () => {
 					</form>
 				</ContactCard>
 			</section>
-		</>
+		</LazyAnimation>
 	);
 };

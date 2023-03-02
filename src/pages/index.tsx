@@ -1,15 +1,16 @@
 import { GlobalContext, GlobalContextType } from "@/Context/GlobalProvider";
-import { AiFillMail, AiFillGithub } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
 import { useContext } from "react";
 import { m } from "framer-motion";
-import { LightenDarkenColor } from "@/utils";
+import { AiFillMail, AiFillGithub } from "react-icons/ai";
 import { ImageChanger } from "../components/ImageChanger";
 
 import { AboutMeSection } from "../components/Contact/AboutMeSection";
-import { ContactSection } from "../components/Contact/ContactSection";
-import { ProjectsSection } from "../components/Contact/ProjectsSection";
+const ContactSection = dynamic(() => import("../components/Contact/ContactSection").then((r) => r.ContactSection));
+const ProjectsSection = dynamic(() => import("../components/Contact/ProjectsSection").then((r) => r.ProjectsSection));
+
 import { LazyAnimation } from "@/components/LazyAnimation";
+import dynamic from "next/dynamic";
 
 const RenderTitleItem = ({ children }: { children: any }) => {
 	return (
