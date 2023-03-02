@@ -8,8 +8,8 @@ import dynamic from "next/dynamic";
 import { ImageChanger } from "../components/ImageChanger";
 
 import { AboutMeSection } from "../components/Contact/AboutMeSection";
-const ContactSection = dynamic(() => import("../components/Contact/ContactSection").then((r) => r.ContactSection));
-const ProjectsSection = dynamic(() => import("../components/Contact/ProjectsSection").then((r) => r.ProjectsSection));
+import { ContactSection } from "../components/Contact/ContactSection";
+import { ProjectsSection } from "../components/Contact/ProjectsSection";
 
 import { LazyAnimation } from "@/components/LazyAnimation";
 
@@ -119,10 +119,10 @@ export default function Home() {
 							<p>Github</p>
 						</a>
 					</li>
-					<li className="p-4 rounded-2xl flex shadow-md  items-end justify-center bg-green-300">
+					<li className="w-12 h-24 m-auto justify-center flex  max-w-md">
 						<a href={`/resume.pdf`} download className="">
-							<RiPagesLine size={100} />
-							<p className="text-center font-bold text-xl font-lato">Resume</p>
+							<RiPagesLine size={40} />
+							<p className="">Resume</p>
 						</a>
 					</li>
 				</ul>

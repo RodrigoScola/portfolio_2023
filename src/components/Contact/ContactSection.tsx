@@ -39,7 +39,7 @@ export const ContactSection = () => {
 	};
 
 	return (
-		<LazyAnimation>
+		<>
 			<section className="my-2">
 				<p className="text-center text-3xl">See what i am up to</p>
 				<ul className="flex justify-evenly flex-wrap gap-3 py-12">
@@ -148,6 +148,6 @@ export const ContactSection = () => {
 					</form>
 				</ContactCard>
 			</section>
-		</LazyAnimation>
+		</>
 	);
 };
