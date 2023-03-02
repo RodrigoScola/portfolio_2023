@@ -1,4 +1,3 @@
-import Image, { StaticImageData } from "next/image";
 import React from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";

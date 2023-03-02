@@ -62,7 +62,7 @@ const GlitchTitle = ({ title }: { title: string }) => {
 				<p
 					onMouseEnter={() => {
 						if (!running) {
-							setIterations(0);
+							setIterations(index);
 						}
 					}}
 					key={index}
@@ -85,11 +85,11 @@ const RenderItem = ({ title, image }: NItemType) => {
 
 const RenderItems = ({ items, title }: { items: NItemType[]; title: string }) => {
 	return (
-		<div className="flex absolute items-center">
-			<div className="absolute -left-12  text-5xl -z-20 opacity-40 ">
+		<div className="flex  items-center">
+			<div className="absolute left-12   text-5xl -z-20 opacity-40 ">
 				<GlitchTitle title={title} />
 			</div>
-			<ul className="flex justify-center flex-wrap gap-6 m-auto">
+			<ul className="flex justify-center flex-wrap sm:gap-6 m-auto">
 				{items.map((item, index) => (
 					<li key={index}>
 						<RenderItem title={item.title} image={item.image} />

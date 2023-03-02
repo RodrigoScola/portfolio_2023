@@ -46,25 +46,26 @@ export const Card = ({
 				transition={{
 					duration: 0.2,
 				}}
-				className="mt-4  p bg-gradient-to-b p-5 flex flex-col sm:flex-row rounded-3xl  text-black"
+				className="mt-4 p-4 bg-gradient-to-b  flex flex-col sm:flex-row rounded-3xl  text-black"
 			>
 				{cardOrientation == "left" && typeof image !== "undefined" && (
 					<ImageComponent image={image} title={title} />
 				)}
-				<div className="flex rounded-3xl order-1 sm:order-none   flex-col pl-5 place-content-between col-span-2">
+				<div className="flex rounded-3xl order-1 sm:order-none   flex-col px-3 place-content-between col-span-2">
 					<motion.div
 						initial={{ opacity: 0, x: oposite == "right" ? 50 : -50 }}
 						whileInView={{
 							opacity: 1,
 							x: 0,
 						}}
+						viewport={{ once: true }}
 						transition={{
 							duration: 1.5,
 						}}
 						className="sm:flex sm:items-center"
 					>
 						<div
-							className="border-b-orange-900 pt-4 border-b-2 max-w-xl border-opacity-20 pb-2 w-fit pr-4
+							className="border-b-orange-900 pt-4 border-b-2 max-w-lg border-opacity-20 pb-2 w-fit pr-4
 					"
 						>
 							<motion.p
@@ -95,13 +96,13 @@ export const Card = ({
 					>
 						{bodyText}
 					</motion.div>
-					<div className="flex md:gap-12  justify-center text-xl lg:text-2xl mb-3">
+					<div className="flex md:gap-12 justify-center text-xl lg:text-2xl mb-3">
 						{liveUrl && (
 							<a
 								target={"_blank"}
 								href={liveUrl}
 								rel={"noreferrer"}
-								className="border-4 min-w-fit  h-fit text-left p-2 m-1  text-white font-semibold  border-spacing-2 border-primary-lighter bg-black rounded-full card-animation hover:scale-105 transition-transform ease-in duration-75 hover:shadow-md"
+								className="border-4 min-w-fit  h-fit text-left p-1 sm:p-2 m-1  text-white font-semibold  border-spacing-2 border-primary-lighter bg-black rounded-full card-animation hover:scale-105 transition-transform ease-in duration-75 hover:shadow-md"
 							>
 								See it Live
 							</a>
@@ -111,7 +112,7 @@ export const Card = ({
 								target={"_blank"}
 								href={codeUrl}
 								rel={"noreferrer"}
-								className="border-4 min-w-fit  h-fit text-left p-2 m-1  text-white font-semibold  border-spacing-2 border-primary-lighter bg-black rounded-full card-animation hover:scale-105 transition-transform ease-in duration-75 hover:shadow-md"
+								className="border-4 min-w-fit  h-fit text-left p-1 sm:p-2 m-1  text-white font-semibold  border-spacing-2 border-primary-lighter bg-black rounded-full card-animation hover:scale-105 transition-transform ease-in duration-75 hover:shadow-md"
 							>
 								See The Code
 							</a>

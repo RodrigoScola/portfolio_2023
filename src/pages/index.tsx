@@ -3,14 +3,11 @@ import { AiFillMail, AiFillGithub } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
 import { useContext } from "react";
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
 import { LightenDarkenColor } from "@/utils";
-import Link from "next/link";
-
-const ImageChanger = dynamic(() => import("../components/ImageChanger").then((r) => r.ImageChanger));
-const AboutMeSection = dynamic(() => import("../components/Contact/AboutMeSection").then((r) => r.AboutMeSection));
-const ContactSection = dynamic(() => import("../components/Contact/ContactSection").then((r) => r.ContactSection));
-const ProjectsSection = dynamic(() => import("../components/Contact/ProjectsSection").then((r) => r.ProjectsSection));
+import { ImageChanger } from "../components/ImageChanger";
+import { AboutMeSection } from "../components/Contact/AboutMeSection";
+import { ContactSection } from "../components/Contact/ContactSection";
+import { ProjectsSection } from "../components/Contact/ProjectsSection";
 
 const RenderTitleItem = ({ children }: { children: any }) => {
 	return (
@@ -39,15 +36,6 @@ const RenderTitleItem = ({ children }: { children: any }) => {
 
 export default function Home() {
 	const gcon = useContext(GlobalContext) as GlobalContextType;
-
-	const handleSetEmail = () => {
-		if (typeof window !== "undefined") {
-			window.scrollTo({ top: 0, behavior: "smooth" });
-			setTimeout(() => {
-				gcon.setStep(2);
-			}, 750);
-		}
-	};
 
 	return (
 		<div className="bg-white">
@@ -99,12 +87,12 @@ export default function Home() {
 					</section>
 				</div>
 			</motion.div>
-			<div id="footer" className="flex pt-12 flex-col bg-black  z-50 text-white items-center justify-center">
+			<div id="footer" className="flex pt-12  flex-col bg-black  z-50 text-white items-center justify-evenly">
 				<div className="py-6">
 					<p className="font-lato text-xl">Hey there</p>
 				</div>
-				<ul className="flex justify-around gap-6">
-					<li className="w-24 h-24 flex flex-col justify-center">
+				<ul className="flex justify-between flex-row w-full ">
+					<li className="w-12 h-24 m-auto justify-center flex  max-w-md  ">
 						<a
 							href="https://www.linkedin.com/in/rodrigo-scola-2517521b6/"
 							rel={"noreferrer"}
@@ -114,7 +102,7 @@ export default function Home() {
 							<p>linkedin</p>
 						</a>
 					</li>
-					<li className="w-24 h-24 flex flex-col justify-center">
+					<li className="w-12 h-24 m-auto justify-center flex  max-w-md">
 						<a
 							href="https://www.linkedin.com/in/rodrigo-scola-2517521b6/"
 							rel={"noreferrer"}
@@ -124,9 +112,15 @@ export default function Home() {
 							<p>Github</p>
 						</a>
 					</li>
-					<li className="w-24 cursor-pointer h-24 flex flex-col justify-center">
-						<AiFillMail size={40} />
-						<p>resume</p>
+					<li className="w-12 h-24 m-auto justify-center flex  max-w-md">
+						<a
+							href="https://www.linkedin.com/in/rodrigo-scola-2517521b6/"
+							rel={"noreferrer"}
+							target={"_blank"}
+						>
+							<AiFillMail size={40} />
+							<p>Resume </p>
+						</a>
 					</li>
 				</ul>
 			</div>

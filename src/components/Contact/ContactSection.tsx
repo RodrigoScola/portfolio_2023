@@ -41,7 +41,7 @@ export const ContactSection = () => {
 		<>
 			<section className="my-2">
 				<p className="text-center text-3xl">See what i am up to</p>
-				<ul className="flex justify-evenly  gap-3 py-12">
+				<ul className="flex justify-evenly flex-wrap  gap-3 py-12">
 					<motion.li
 						initial={{ scale: 1 }}
 						whileHover={{ scale: 1.1 }}
@@ -93,7 +93,7 @@ export const ContactSection = () => {
 					</li> */}
 				</ul>
 			</section>
-			<section className="min-w-sm w-[50%] m-auto">
+			<section className="min-w-fit w-[50%] m-auto">
 				<ContactCard>
 					<p className="text-center text-4xl  w-fit m-auto rounded-xl p-4">Contact me</p>
 				</ContactCard>

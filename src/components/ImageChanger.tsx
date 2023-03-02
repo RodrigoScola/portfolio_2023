@@ -1,8 +1,8 @@
 import Photo from "../images/profile.jpg";
 import Connect from "../images/all_connect.png";
 import Projects from "../images/all_2023.png";
-import { useContext, useEffect, useMemo, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useContext, useCallback, useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion, transform } from "framer-motion";
 import { GlobalContext, GlobalContextType } from "@/Context/GlobalProvider";
 import { LightenDarkenColor } from "@/utils";
 
@@ -19,36 +19,28 @@ export const ImageChanger = () => {
 		}, 700);
 		setC(colors.backgroundColor);
 	}, [colors.previousBackgroundColor]);
+	const rotation = useMemo(() => page * 120, [page]);
 
 	const handlePage = (count: number) => {
 		setPage(page + count);
 		changeStep(count);
 	};
-	const rotation = page * 120;
-	const getRotations = (num: number) => {
-		const nstep = step;
-		return -(nstep - num);
-	};
+	const getRotations = useCallback(
+		(num: number) => {
+			const nstep = step;
+			return -(nstep - num);
+		},
+		[step]
+	);
 
 	useEffect(() => {
 		setPage((curr) => curr + step);
 	}, [step]);
 
-	const getRandomCount = () => {
-		const numbers = new Array(Math.floor(Math.random() * 10)).fill(1).reduce((curr, num) => {
-			num = Math.random() < 0.2 == true ? -(Math.random() * num) : Math.random() * num;
-
-			curr.push(Math.round(num) / 2);
-			return curr;
-		}, []);
-		console.log(numbers);
-
-		return numbers;
-	};
-
+	if (colors.backgroundColor == "#ffffff") return <div></div>;
 	return (
 		<>
-			{c !== colors.previousBackgroundColor && colors.backgroundColor !== "#ffffff" ? (
+			{c !== colors.previousBackgroundColor ? (
 				<motion.div
 					// layoutId="transition"
 					style={{
@@ -101,7 +93,7 @@ export const ImageChanger = () => {
 						<p className=" drop-shadow-lg">Contact</p>
 					</motion.div>
 				</motion.div>
-				<div id="controls" className="relative left-32 top-2 lg:left-96  md:left-52  md:-top-12">
+				<div id="controls" className="relative left-20 top-2 lg:left-96  md:left-52  md:-top-12">
 					<div className="w-fit " onClick={() => handlePage(+1)} id="left">
 						<div className="">
 							<svg
@@ -141,8 +133,8 @@ export const ImageChanger = () => {
 									step == 0 ? "object-cover rounded-full" : "object-contain"
 								}
 				} xl:w-96 xl:h-96  xl:top-14 xl:left-24 drop-shadow-2xl`}
-								key={"phto"}
-								src={photos[step]}
+								key={index}
+								src={src}
 								initial={{
 									scale: 0,
 								}}
