@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { FiGithub } from "react-icons/fi";
 import { AiOutlineLinkedin } from "react-icons/ai";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ContactCard } from "../ContactCard";
 import { RiPagesLine } from "react-icons/ri";
 
@@ -42,7 +42,7 @@ export const ContactSection = () => {
 			<section className="my-2">
 				<p className="text-center text-3xl">See what i am up to</p>
 				<ul className="flex justify-evenly flex-wrap  gap-3 py-12">
-					<motion.li
+					<m.li
 						initial={{ scale: 1 }}
 						whileHover={{ scale: 1.1 }}
 						transition={{ ease: "backOut" }}
@@ -57,8 +57,8 @@ export const ContactSection = () => {
 							<AiOutlineLinkedin size={100} />
 							<p className="text-center font-bold text-xl font-lato">Linkedin</p>
 						</a>
-					</motion.li>
-					<motion.li
+					</m.li>
+					<m.li
 						initial={{ scale: 1 }}
 						whileHover={{ scale: 1.1 }}
 						transition={{ ease: "backOut" }}
@@ -73,8 +73,8 @@ export const ContactSection = () => {
 							<FiGithub size={100} />
 							<p className="text-center font-bold text-xl font-lato">Github</p>
 						</a>
-					</motion.li>
-					<motion.li
+					</m.li>
+					<m.li
 						initial={{ scale: 1 }}
 						whileHover={{ scale: 1.1 }}
 						transition={{ ease: "backOut" }}
@@ -84,7 +84,7 @@ export const ContactSection = () => {
 							<RiPagesLine size={100} />
 							<p className="text-center font-bold text-xl font-lato">Resume</p>
 						</a>
-					</motion.li>
+					</m.li>
 					{/* <li className="p-4 rounded-2xl flex shadow-md  items-end justify-center bg-green-300">
 						<div className="">
 							<AiOutlineMail size={100} />

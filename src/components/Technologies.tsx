@@ -7,8 +7,9 @@ import {
 	backendItems,
 } from "../data/items";
 import Image, { StaticImageData } from "next/image";
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import { LazyAnimation } from "./LazyAnimation";
 type NItemType = {
 	title: string;
 	image: StaticImageData;
@@ -57,20 +58,20 @@ const GlitchTitle = ({ title }: { title: string }) => {
 	}, [inView]);
 
 	return (
-		<motion.div ref={ref} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="flex">
-			{letterTitle.split("").map((letter, index) => (
-				<p
-					onMouseEnter={() => {
-						if (!running) {
-							setIterations(index);
-						}
-					}}
-					key={index}
-				>
-					{letter}
-				</p>
-			))}
-		</motion.div>
+		<LazyAnimation>
+			<m.div ref={ref} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="flex">
+				{letterTitle.split("").map((letter, index) => (
+					<p
+						onMouseEnter={() => {
+							setIterations(0);
+						}}
+						key={index}
+					>
+						{letter}
+					</p>
+				))}
+			</m.div>
+		</LazyAnimation>
 	);
 };
 
@@ -86,7 +87,7 @@ const RenderItem = ({ title, image }: NItemType) => {
 const RenderItems = ({ items, title }: { items: NItemType[]; title: string }) => {
 	return (
 		<div className="flex  items-center">
-			<div className="absolute left-12   text-5xl -z-20 opacity-40 ">
+			<div className="absolute left-12 xl:left-96   text-5xl -z-20 opacity-40 ">
 				<GlitchTitle title={title} />
 			</div>
 			<ul className="flex justify-center flex-wrap sm:gap-6 m-auto">

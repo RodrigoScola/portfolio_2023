@@ -1,5 +1,6 @@
 import { useState, useEffect, ReactElement, ReactNode } from "react";
-import { motion, animate } from "framer-motion";
+import { m, animate } from "framer-motion";
+import { LazyAnimation } from "./LazyAnimation";
 
 const propIn = {
 	duration: 0.3,
@@ -40,13 +41,18 @@ export const ContactCard = ({ children }: { children: JSX.Element | ReactElement
 	}, [isHovering]);
 
 	return (
-		<motion.div
-			onMouseEnter={() => setIsHovering(true)}
-			onMouseLeave={() => setIsHovering(false)}
-			style={{ background: `linear-gradient(110deg,${propIn.backgroundColor},  ${backgroundColor})`, scale }}
-			className={"rounded-xl"}
-		>
-			{children}
-		</motion.div>
+		<LazyAnimation>
+			<m.div
+				onMouseEnter={() => setIsHovering(true)}
+				onMouseLeave={() => setIsHovering(false)}
+				style={{
+					background: `linear-gradient(110deg,${propIn.backgroundColor},  ${backgroundColor})`,
+					scale,
+				}}
+				className={"rounded-xl"}
+			>
+				{children}
+			</m.div>
+		</LazyAnimation>
 	);
 };
