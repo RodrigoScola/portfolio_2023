@@ -39,6 +39,11 @@ export const ImageChanger = () => {
     [step]
   );
 
+  useEffect(() => {
+    if (step == 0) {
+      setPage((curr) => curr + step);
+    }
+  }, [step]);
   if (colors.backgroundColor == "#f2f2f2" || step == -1) return <div></div>;
   return (
     <>
