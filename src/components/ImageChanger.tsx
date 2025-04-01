@@ -2,7 +2,7 @@ import { GlobalContext, GlobalContextType } from "@/Context/GlobalProvider";
 import { LightenDarkenColor } from "@/utils";
 import { AnimatePresence, m } from "framer-motion";
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
-import Projects from "../images/all_2023.png";
+import Projects from "../images/all_2025.png";
 import Connect from "../images/all_connect.png";
 import Photo from "../images/profile.jpg";
 import { LazyAnimation } from "./LazyAnimation";
@@ -59,9 +59,9 @@ export const ImageChanger = () => {
               scale: 25,
               zIndex: -10,
               overflow: "hidden",
-              background: `linear-gradient(${
-                colors.backgroundColor
-              }, ${LightenDarkenColor(colors.backgroundColor, -3)})`,
+              // background: `linear-gradient(${
+              //   colors.backgroundColor
+              // }, ${LightenDarkenColor(colors.backgroundColor, -3)})`,
               opacity: 1,
               // transitionEnd: { opacity: 0, display: "none" },
             }}
@@ -147,9 +147,8 @@ export const ImageChanger = () => {
             <LazyAnimation>
               <AnimatePresence>
                 <m.img
-                  className={`absolute h-48 w-48 top-10 left-12  md:left-12 md:top-12 md:w-64  md:h-64 -z-10 ${
-                    step == 0 ? "object-cover rounded-full" : "object-contain"
-                  }
+                  className={`absolute h-48 w-48 top-10 left-12  md:left-12 md:top-12 md:w-64  md:h-64 -z-10 ${step == 0 ? "object-cover rounded-full" : "object-contain"
+                    }
 				} xl:w-96 xl:h-96  xl:top-14 xl:left-24 drop-shadow-2xl`}
                   key={index}
                   src={src}

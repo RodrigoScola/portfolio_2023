@@ -5,12 +5,14 @@ import { LazyAnimation } from "./LazyAnimation";
 
 type CardType = {
 	title: string;
-	bodyText: JSX.Element | string;
+	description: JSX.Element | string;
 	image?: StaticImageData;
 	year?: string | number;
 	liveUrl?: string;
+	liveMessage?: string
 	codeUrl?: string;
 	cardOrientation?: "left" | "right";
+
 };
 
 const ImageComponent = ({ image, title }: { image: StaticImageData; title: string }) => {
@@ -21,7 +23,9 @@ const ImageComponent = ({ image, title }: { image: StaticImageData; title: strin
 	);
 };
 
-export const Card = ({ liveUrl, year, codeUrl, title, bodyText, image, cardOrientation = "left" }: CardType) => {
+
+
+export const Card = ({ liveUrl, year, codeUrl, title, description: bodyText, image, cardOrientation = "left", liveMessage = "See It Live" }: CardType) => {
 	const oposite: "left" | "right" = cardOrientation == "left" ? "right" : "left";
 
 	return (
@@ -98,7 +102,7 @@ export const Card = ({ liveUrl, year, codeUrl, title, bodyText, image, cardOrien
 									rel={"noreferrer"}
 									className="border-4 min-w-fit  h-fit text-left p-1 sm:p-2 m-1  text-white font-semibold  border-spacing-2 border-primary-lighter bg-black rounded-full card-animation hover:scale-105 transition-transform ease-in duration-75 hover:shadow-md"
 								>
-									See it Live
+									{liveMessage}
 								</a>
 							)}
 							{codeUrl && (

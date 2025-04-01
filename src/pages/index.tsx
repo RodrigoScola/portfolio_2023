@@ -4,7 +4,6 @@ import { useContext } from "react";
 import { m } from "framer-motion";
 import { AiFillGithub } from "react-icons/ai";
 import { RiPagesLine } from "react-icons/ri";
-import dynamic from "next/dynamic";
 import { ImageChanger } from "../components/ImageChanger";
 
 import { AboutMeSection } from "../components/Contact/AboutMeSection";
@@ -42,6 +41,7 @@ const RenderTitleItem = ({ children }: { children: any }) => {
 
 export default function Home() {
 	const gcon = useContext(GlobalContext) as GlobalContextType;
+
 
 	return (
 		<div className="bg-white">

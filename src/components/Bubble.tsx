@@ -1,4 +1,4 @@
-export const Bublle = (props: any) => {
+export const Bubble = (props: any) => {
 	return (
 		<div
 			{...props}
